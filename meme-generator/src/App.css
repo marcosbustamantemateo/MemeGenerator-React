@@ -1,0 +1,145 @@
+header {
+  text-align: center;
+  background: linear-gradient(45deg, rgb(42, 8, 69), rgb(186, 1, 255));
+  overflow: hidden;
+}
+
+header * {
+  margin: 10px;
+  display: inline-block;
+}
+
+.imgContainer {
+  width: 40%;
+}
+
+.imgContainer img {
+  width: 35%;
+}
+
+.titleContainer {
+  width: 40%;
+}
+
+.titleContainer p {
+  font-size: 90px;
+  color: rgb(255, 255, 255);
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  text-align: left;
+}
+
+.memesContainer {
+  text-align: center;
+}
+
+.memeImg {
+  display: inline-block;
+}
+
+.memeImg img {
+  width: 200px;
+  height: 200px;
+  margin: 10px 2px 0px 2px ;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+ /* The Modal (background) */
+ .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  text-align: center;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
+
+.imgModalContainer, .formModalContainer {
+  margin: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.formModalContainer span {
+  display: inline;
+}
+
+.formModalContainer input {
+  display: inline;
+  margin: 5px;
+  border-radius: 12px;
+  border: 0;
+  background: linear-gradient(45deg, rgb(219, 129, 252), rgb(177, 52, 223));
+  padding: 5px;
+  margin:5px;
+  font-weight: bold;
+}
+
+.imgModalContainer img {
+  max-width: 100%;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+
+@media (min-width: 240px) and (max-width: 1024px) {
+  
+  header {
+    min-height: 200px;
+  }
+
+  .imgContainer {
+    width: 100%;
+  }
+  
+  .imgContainer img {
+    width: 45%;
+  }
+  
+  .titleContainer {
+    width: 100%;
+  }
+  
+  .titleContainer p {
+    font-size: 50px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 240px) and (max-width: 480px) {
+  
+  .memeImg img {
+    width: 150px;
+    height: 150px;
+  }
+}
