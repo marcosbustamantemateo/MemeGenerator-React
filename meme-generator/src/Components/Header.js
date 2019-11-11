@@ -1,11 +1,13 @@
 import React from "react";
 
+const trollFace = require("../Images/Trollface.png");
+
 const Header = () => {
   return (
     <header>
       <div className='imgContainer'>
         <img
-          src="http://www.pngall.com/wp-content/uploads/2016/05/Trollface.png"
+          src={trollFace}
           alt="Problem?"
         />
       </div>

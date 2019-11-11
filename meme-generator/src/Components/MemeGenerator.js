@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import ShareButtons from "./ShareButtons";
 
 class MemeGenerator extends Component {
   constructor() {
@@ -8,7 +9,7 @@ class MemeGenerator extends Component {
       allMemeImgs: [],
       memeSelected: {},
       words: [],
-      urlMeme: ''
+      urlMeme: undefined
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,18 +31,19 @@ class MemeGenerator extends Component {
 
   openModal = meme => {
     this.setState({ memeSelected: meme });
-    console.log(meme);
     this.getModal().style.display = "block";
   };
 
   closeModal = () => {
     this.getModal().style.display = "none";
+    this.reset();
   };
 
   closeModalByClickOut = () => {
     window.onclick = event => {
       if (event.target === this.getModal()) {
         this.getModal().style.display = "none";
+        this.reset();
       }
     };
   };
@@ -56,63 +58,100 @@ class MemeGenerator extends Component {
     this.setState({ words });
   };
 
-  handleSubmit(event) {
+  reset = () => {
+    this.setState({ urlMeme: undefined, words: [] });
+  };
+
+  handleSubmit = event => {
     const { memeSelected, words } = this.state;
     event.preventDefault();
 
-    fetch(
-      "https://api.imgflip.com/caption_image?template_id=" +
-        memeSelected.id +
-        "&username=MarcosBustamante&password=meme1234&" +
-        "text0=" + words[0] + "&text1=" + words[1],
-      {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/x-www-form-urlencoded"
-        })
-      }
-    )
-      .then(response => response.json())
-      .then(response => this.setState({ url: response.data.url }));
-  }
+    if (words.length === 2) {
+      fetch(
+        "https://api.imgflip.com/caption_image?template_id=" +
+          memeSelected.id +
+          "&username=MarcosBustamante&password=meme1234&" +
+          "text0=" +
+          words[0] +
+          "&text1=" +
+          words[1],
+        {
+          method: "POST",
+          headers: new Headers({
+            "Content-Type": "application/x-www-form-urlencoded"
+          })
+        }
+      )
+        .then(response => response.json())
+        .then(response => {
+          this.setState({ urlMeme: response.data.url });
+        });
+    }
+  };
+
+  image = (url, name) => {
+    return (
+      <div className="imgModalContainer">
+        <img src={url} alt={name} />
+      </div>
+    );
+  };
+
+  modal = (memeSelected, url) => {
+    return (
+      <div id="myModal" className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={this.closeModal}>
+            &times;
+          </span>
+
+          <h2>{memeSelected.name}</h2>
+
+          {url === undefined
+            ? this.image(memeSelected.url, memeSelected.name)
+            : this.image(url, memeSelected.name)}
+          <div className="formModalContainer">
+            {url === undefined ? (
+              <React.Fragment>
+                <h4 style={{ fontSize: "25px" }}>Complete all fields</h4>
+                <form onSubmit={this.handleSubmit}>
+                  {memeSelected.box_count !== undefined
+                    ? Array.from(Array(memeSelected.box_count)).map(
+                        (element, index) => {
+                          return (
+                            <div key={index}>
+                              <span>Text {index + 1}</span>{" "}
+                              <input
+                                type="text"
+                                onChange={this.handleChange.bind(this, index)}
+                              />
+                              <br />
+                            </div>
+                          );
+                        }
+                      )
+                    : null}
+                  <input
+                    type="submit"
+                    value="Do it!"
+                  />
+                </form>
+              </React.Fragment>
+            ) : (
+              <input type="text" value={url} style={{ width: '120%' }} readOnly />
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   render() {
-    const { allMemeImgs, memeSelected } = this.state;
+    const { allMemeImgs, memeSelected, urlMeme } = this.state;
 
     return (
       <div>
-        <div id="myModal" className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={this.closeModal}>
-              &times;
-            </span>
-            <h2>{memeSelected.name}</h2>
-            <div className="imgModalContainer">
-              <img src={memeSelected.url} alt={memeSelected.name} />
-            </div>
-            <div className="formModalContainer">
-              <form onSubmit={this.handleSubmit}>
-                {memeSelected.box_count !== undefined
-                  ? Array.from(Array(memeSelected.box_count)).map(
-                      (element, index) => {
-                        return (
-                          <div key={index}>
-                            <span>Text {index + 1}</span>{" "}
-                            <input
-                              type="text"
-                              onChange={this.handleChange.bind(this, index)}
-                            />
-                            <br />
-                          </div>
-                        );
-                      }
-                    )
-                  : null}
-                <input type="submit" value="Do it!" />
-              </form>
-            </div>
-          </div>
-        </div>
+        {this.modal(memeSelected, urlMeme)}
 
         <div className="memesContainer">
           {allMemeImgs.map(element => {
