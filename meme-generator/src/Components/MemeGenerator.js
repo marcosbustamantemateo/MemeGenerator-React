@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import Tooltip from "rc-tooltip";
 // import ShareButtons from "./ShareButtons";
+
+const copyIcon = require("./../Images/copy.png");
 
 class MemeGenerator extends Component {
   constructor() {
@@ -144,12 +147,13 @@ class MemeGenerator extends Component {
               <div className="shareModalContainer">
                 <p>Image Link</p>
                 <input id="url" type="text" value={url} readOnly />{" "}
-                <img
-                  src="https://img.icons8.com/nolan/64/000000/copy.png"
-                  alt="copy icon"
-                  className="iconCopy"
-                  onClick={() => this.copy("url")}
-                />
+                  <img
+                    src={copyIcon}
+                    alt="copy icon"
+                    className="iconCopy"
+                    onClick={() => this.copy("url")}
+                  />
+                
                 <p>Html code</p>
                 <input
                   id="html"
@@ -164,7 +168,7 @@ class MemeGenerator extends Component {
                   readOnly
                 />{" "}
                 <img
-                  src="https://img.icons8.com/nolan/64/000000/copy.png"
+                  src={copyIcon}
                   alt="copy icon"
                   className="iconCopy"
                   onClick={() => this.copy("html")}
