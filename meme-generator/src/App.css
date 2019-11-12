@@ -65,7 +65,7 @@ header * {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -85,7 +85,7 @@ header * {
 
 .imgModalContainer, .formModalContainer {
   margin: 5px;
-  display: inline-block;
+  display: block;
   vertical-align: middle;
   font-family: 'Mansalva', cursive;
 }
@@ -102,8 +102,8 @@ header * {
   border-radius: 12px;
   border: 0;
   background: linear-gradient(45deg, rgb(219, 129, 252), rgb(177, 52, 223));
-  padding: 5px;
-  margin:5px;
+  padding: 5px 15px 5px 15px;
+  margin: 5px;
   font-weight: bold;
 }
 
@@ -112,6 +112,66 @@ header * {
   width: 300px;
   border: 2px solid black;
   border-radius: 10px;
+}
+
+.shareModalContainer {
+  width: 100%;
+  text-align: -moz-center;
+}
+
+.shareModalContainer p {
+  font-size: 21px;
+}
+
+.shareModalContainer input {
+  display: inline-block;
+}
+
+.iconCopy {
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+@media (min-width: 240px) and (max-width: 1024px) {
+  
+  header {
+    min-height: 200px;
+  }
+
+  .imgContainer {
+    width: 100%;
+  }
+  
+  .imgContainer img {
+    width: 45%;
+  }
+  
+  .titleContainer {
+    width: 100%;
+  }
+  
+  .titleContainer p {
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .modal-content {
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+}
+
+@media (min-width: 240px) and (max-width: 480px) {
+  
+  .memeImg img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .modal-content {
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
 }
 
 .resp-sharing-button__link,
@@ -311,36 +371,3 @@ background-color: #FF6600
 
 .resp-sharing-button--telegram:hover {
   background-color: #4B97D1;}
-
-
-@media (min-width: 240px) and (max-width: 1024px) {
-  
-  header {
-    min-height: 200px;
-  }
-
-  .imgContainer {
-    width: 100%;
-  }
-  
-  .imgContainer img {
-    width: 45%;
-  }
-  
-  .titleContainer {
-    width: 100%;
-  }
-  
-  .titleContainer p {
-    font-size: 50px;
-    text-align: center;
-  }
-}
-
-@media (min-width: 240px) and (max-width: 480px) {
-  
-  .memeImg img {
-    width: 150px;
-    height: 150px;
-  }
-}

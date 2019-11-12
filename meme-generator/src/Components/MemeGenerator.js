@@ -29,6 +29,12 @@ class MemeGenerator extends Component {
     this.closeModalByClickOut();
   }
 
+  copy = inputName => {
+    const input = document.getElementById(inputName);
+    input.select();
+    document.execCommand("copy");
+  };
+
   openModal = meme => {
     this.setState({ memeSelected: meme });
     this.getModal().style.display = "block";
@@ -131,14 +137,39 @@ class MemeGenerator extends Component {
                         }
                       )
                     : null}
-                  <input
-                    type="submit"
-                    value="Do it!"
-                  />
+                  <input type="submit" value="Do it!" />
                 </form>
               </React.Fragment>
             ) : (
-              <input type="text" value={url} style={{ width: '120%' }} readOnly />
+              <div className="shareModalContainer">
+                <p>Image Link</p>
+                <input id="url" type="text" value={url} readOnly />{" "}
+                <img
+                  src="https://img.icons8.com/nolan/64/000000/copy.png"
+                  alt="copy icon"
+                  className="iconCopy"
+                  onClick={() => this.copy("url")}
+                />
+                <p>Html code</p>
+                <input
+                  id="html"
+                  type="text"
+                  value={
+                    '<a href="' +
+                    url +
+                    '"/><img src="' +
+                    url +
+                    '" alt="meme_image" /></a>'
+                  }
+                  readOnly
+                />{" "}
+                <img
+                  src="https://img.icons8.com/nolan/64/000000/copy.png"
+                  alt="copy icon"
+                  className="iconCopy"
+                  onClick={() => this.copy("html")}
+                />
+              </div>
             )}
           </div>
         </div>
