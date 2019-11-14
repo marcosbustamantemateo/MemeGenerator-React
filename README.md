@@ -1,3 +1,3 @@
 # Meme Generator
-Built in React
+Built in React<br>
 <a href="https://marcosbustamantemateodemos.github.io/memeGenerator/">View Live Demo</a>
