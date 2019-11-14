@@ -10,15 +10,15 @@ header * {
 }
 
 .imgContainer {
-  width: 40%;
+  width: 20%;
 }
 
 .imgContainer img {
-  width: 35%;
+  width: 45%;
 }
 
 .titleContainer {
-  width: 40%;
+  width: 10%;
 }
 
 .titleContainer p {
@@ -26,6 +26,18 @@ header * {
   color: rgb(255, 255, 255);
   font-family: Impact, 'Arial Narrow Bold', sans-serif;
   text-align: left;
+}
+
+footer {
+  text-align: center;
+  background: linear-gradient(45deg, rgb(42, 8, 69), rgb(186, 1, 255));
+  font-size: 15px;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+}
+
+footer a {
+  color: rgb(255, 255, 255);
 }
 
 .memesContainer {

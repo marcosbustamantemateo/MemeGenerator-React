@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ShareButtons from "./ShareButtons";
+import ShareButtons from "./ShareButtons";
 
 const copyIcon = require("./../Images/copy.png");
 
@@ -172,6 +172,7 @@ class MemeGenerator extends Component {
                   className="iconCopy"
                   onClick={() => this.copy("html")}
                 />
+                <ShareButtons url={"https://i.imgflip.com/3ga3wu.jpg"} />
               </div>
             )}
           </div>
