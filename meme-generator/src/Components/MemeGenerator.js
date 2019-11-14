@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Tooltip from "rc-tooltip";
 // import ShareButtons from "./ShareButtons";
 
 const copyIcon = require("./../Images/copy.png");
